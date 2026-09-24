@@ -1,15 +1,15 @@
-import axios from 'axios'; // Add quotes around 'axios'
+import axios from 'axios';
 
 const api = axios.create({ 
-  // Add quotes around the fallback localhost URL string
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api" 
+  // Vite will automatically intercept this relative path 
+  // and redirect it to your Render or localhost backend URL!
+  baseURL: '/api' 
 }); 
 
 export const fruitApi = { 
   list: (params) => api.get('/fruits', { params }), 
   stats: () => api.get('/fruits/stats'), 
   create: (payload) => api.post('/fruits', payload), 
-  // Use backticks (`) for string interpolation \${id}
   update: (id, payload) => api.put(`/fruits/${id}`, payload), 
   remove: (id) => api.delete(`/fruits/${id}`) 
 };
