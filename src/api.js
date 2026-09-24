@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({ 
-  // Vite will automatically intercept this relative path 
-  // and redirect it to your Render or localhost backend URL!
-  baseURL: '/api' 
+  // If VITE_API_URL exists in .env, it uses it. 
+  // Otherwise, it automatically connects directly to your live Render backend!
+  baseURL: import.meta.env.VITE_API_URL || "https://onrender.com" 
 }); 
 
 export const fruitApi = { 
